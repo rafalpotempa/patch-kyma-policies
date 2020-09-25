@@ -40,5 +40,3 @@
 | knative-provisioner-natss | cr-delete                        | ?                                        |
 | application-connector     | application-broker-migration     | ?                                        |
 | compass                   | runtime-agent                    | ?                                        |
-
-watch 'kubectl get pods -A | grep CreateContainerConfigError'
