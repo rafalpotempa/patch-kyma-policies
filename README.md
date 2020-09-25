@@ -4,12 +4,13 @@
 
 This script allows patching of Kyma installation for purpose of investigation and debugging of `allowPrivilegedContainers: false` global policy introduction.
 
-It patches the installation by adding PodSecurityPolicy `kyma.privileged` to the cluster and patching  `ClusterRoles` and `Roles` to be able to use that policy.
+It patches the installation by adding PodSecurityPolicy `kyma.privileged` to the cluster and patching  `ClusterRoles` and `Roles` to be able to use that policy. Thanks to that the installation of other components is possible to be initialized (one-by-one).
 
 Patching concerns following components:
-- kyma-installer
-- cluster-essentials
-- 
+- `kyma-installer`
+- `cluster-essentials`
+- `istio`
+- `isito-kyma-patch`
 
 ## Prerequisites
 
