@@ -1,0 +1,5 @@
+- apiGroups: ['policy']
+  resources: ['podsecuritypolicies']
+  verbs:     ['use']
+  resourceNames:
+  - "kyma.privileged"
