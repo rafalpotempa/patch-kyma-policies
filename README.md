@@ -10,7 +10,7 @@ Patching concerns following components:
 - `kyma-installer`
 - `cluster-essentials`
 - `istio`
-- `isito-kyma-patch`
+- `istio-kyma-patch`
 
 ## Prerequisites
 
