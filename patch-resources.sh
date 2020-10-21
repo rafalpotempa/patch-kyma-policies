@@ -20,6 +20,7 @@ function patch(){
 	resource=$1
 	name=$2
 	printf "$(kubectl get $resource $name -o yaml)\n$(cat resources/patch.yaml)" | kubectl apply -f -
+	echo "-> $resource $name patched"
 }
 
 function restart(){
