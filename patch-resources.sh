@@ -41,7 +41,7 @@ function restart(){
 	echo "-> $resource $name restarted"
 }
 
-kubectl apply -f resources/pod-security-policy.yaml
+kubectl create -f resources/pod-security-policy.yaml
 
 # kyma-installer
 waitfor clusterrole kyma-installer-reader
@@ -61,27 +61,11 @@ restart job istio-system kyma-ns-label
 # istio-installer
 waitfor clusterrole istio-job
 patch clusterrole istio-job
-restart job istio-system istio-install-job
-
-# istio
-waitfor clusterrole istio-sidecar-injector-istio-system
-patch clusterrole istio-sidecar-injector-istio-system 
-patch clusterrole istio-citadel-istio-system 
-patch clusterrole istio-policy
-patch clusterrole istio-galley-istio-system
-patch clusterrole istio-pilot-istio-system
-patch clusterrole istio-mixer-istio-system
-patch "role -n istio-system" istio-ingressgateway-sds
-restart deployment istio-system istio-citadel
-restart deployment istio-system istio-galley
-restart deployment istio-system istio-ingressgateway
-restart deployment istio-system istio-pilot
-restart deployment istio-system istio-policy
-restart deployment istio-system istio-sidecar-injector
-restart deployment istio-system istio-telemetry
+restart job istio-system istio-job-1-7
 
 # istio-kyma-patch
 waitfor clusterrole istio-kyma-patch
 patch clusterrole istio-kyma-patch
 restart job istio-system istio-kyma-patch
 
+echo "-> done"

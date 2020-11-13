@@ -4,8 +4,6 @@ metadata:
   name: kyma.privileged
 spec:
   privileged: true
-  allowedCapabilities:
-      - "*"
   seLinux:
     rule: RunAsAny
   supplementalGroups:
