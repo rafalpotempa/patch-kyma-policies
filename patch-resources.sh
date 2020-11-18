@@ -63,9 +63,4 @@ waitfor clusterrole istio-job
 patch clusterrole istio-job
 restart job istio-system istio-job-1-7
 
-# istio-kyma-patch
-waitfor clusterrole istio-kyma-patch
-patch clusterrole istio-kyma-patch
-restart job istio-system istio-kyma-patch
-
 echo "-> done"
