@@ -43,10 +43,10 @@ function restart(){
 
 kubectl create -f resources/pod-security-policy.yaml
 
-# kyma-installer
-waitfor clusterrole kyma-installer-reader
-patch clusterrole kyma-installer-reader
-restart deployment kyma-installer kyma-installer
+# # kyma-installer
+# waitfor clusterrole kyma-installer-reader
+# patch clusterrole kyma-installer-reader
+# restart deployment kyma-installer kyma-installer
 
 # cluster-essentials
 waitfor clusterrole cluster-essentials-crd-install
@@ -61,6 +61,6 @@ restart job istio-system kyma-ns-label
 # istio-installer
 waitfor clusterrole istio-job
 patch clusterrole istio-job
-restart job istio-system istio-job-1-7
+restart job istio-system istio-job
 
 echo "-> done"
