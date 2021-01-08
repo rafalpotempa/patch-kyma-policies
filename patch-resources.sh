@@ -43,10 +43,14 @@ function restart(){
 
 kubectl create -f resources/pod-security-policy.yaml
 
-# # kyma-installer
-# waitfor clusterrole kyma-installer-reader
-# patch clusterrole kyma-installer-reader
-# restart deployment kyma-installer kyma-installer
+# kyma-installer
+# omit if it doesn't yield CreateContainerConfigError
+if [[ ! 'kubectl get pods -n kyma-installer | grep CreateContainerConfigError' ]]
+then
+	waitfor clusterrole kyma-installer-reader
+	patch clusterrole kyma-installer-reader
+	restart deployment kyma-installer kyma-installer
+fi
 
 # cluster-essentials
 waitfor clusterrole cluster-essentials-crd-install
