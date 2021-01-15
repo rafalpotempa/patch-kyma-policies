@@ -45,7 +45,7 @@ kubectl create -f resources/pod-security-policy.yaml
 
 # kyma-installer
 # omit if it doesn't yield CreateContainerConfigError
-if [[ ! 'kubectl get pods -n kyma-installer | grep CreateContainerConfigError' ]]
+if [[ 'kubectl get pods -n kyma-installer | grep CreateContainerConfigError' ]]
 then
 	waitfor clusterrole kyma-installer-reader
 	patch clusterrole kyma-installer-reader
